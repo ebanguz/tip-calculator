@@ -1,35 +1,108 @@
 <main class="container">
-  <form class="form">
+  <form class="form" [formGroup]="form" (change)="isReady()">
     <div class="form__div flex flex-dir-c">
       <label class="form__label" for="">Bill</label>
-      <img class="form__icon" src="./images/icon-dollar.svg" alt="" srcset="" />
-      <input type="number" placeholder="0" />
+      <img
+        class="form__icon"
+        src="../../../assets/images/icon-dollar.svg"
+        alt=""
+        srcset=""
+      />
+      <input
+        type="number"
+        placeholder="0"
+        appNumberOnly
+        [min]="0"
+        formControlName="bill"
+        [class.is-invalid]="billValid"
+      />
+      <small *ngIf="billValid" class="invalid">Bill can't be zero</small>
     </div>
 
     <div class="form__div flex flex-dir-c">
       <label class="form__label" for="">Select Tip %</label>
       <div class="grid">
-        <input type="radio" name="value" value="5" id="five" />
+        <input
+          type="radio"
+          name="tipPercentage"
+          formControlName="tipPercentage"
+          [value]="5"
+          id="five"
+        />
         <label for="five">5%</label>
-        <input type="radio" name="value" value="10" id="ten" />
+        <input
+          type="radio"
+          name="tipPercentage"
+          formControlName="tipPercentage"
+          [value]="10"
+          [checked]="true"
+          id="ten"
+        />
         <label for="ten">10%</label>
-        <input type="radio" name="value" value="15" id="fifteen" />
+        <input
+          type="radio"
+          name="tipPercentage"
+          formControlName="tipPercentage"
+          [value]="15"
+          id="fifteen"
+        />
         <label for="fifteen">15%</label>
-        <input type="radio" name="value" value="25" id="twentyfive" />
+        <input
+          type="radio"
+          name="tipPercentage"
+          formControlName="tipPercentage"
+          [value]="25"
+          id="twentyfive"
+        />
         <label for="twentyfive">25%</label>
-        <input type="radio" name="value" value="50" id="fifty" />
+        <input
+          type="radio"
+          name="tipPercentage"
+          formControlName="tipPercentage"
+          [value]="50"
+          id="fifty"
+        />
         <label for="fifty">50%</label>
 
         <label for="custom" class="is-visually-hidden">Custom percent</label>
-        <input type="number" name="value" id="custom" placeholder="Custom" />
+        <input
+          type="number"
+          name="tipPercentage"
+          formControlName="tipPercentage"
+          id="custom"
+          placeholder="Custom"
+          appNumberOnly
+          [min]="0"
+          (focus)="fun()"
+        />
       </div>
     </div>
 
     <div class="form__div flex flex-dir-c">
       <label class="form__label" for="">Number of People</label>
-      <img class="form__icon" src="./images/icon-person.svg" alt="" srcset="" />
-      <input type="number" inputmode="numeric" placeholder="0" />
+      <img
+        class="form__icon"
+        src="../../../assets/images/icon-person.svg"
+        alt=""
+        srcset=""
+      />
+      <input
+        type="number"
+        inputmode="numeric"
+        placeholder="0"
+        appNumberOnly
+        [value]="0"
+        [min]="0"
+        formControlName="numberPeople"
+        [class.is-invalid]="numberPeopleValid"
+      />
+      <small *ngIf="numberPeopleValid" class="invalid">Can't be zero</small>
     </div>
   </form>
   <app-display-results></app-display-results>
+  <pre>
+  {{ form.value | json }}
+  {{ form.valid }}
+</pre
+  >
 </main>

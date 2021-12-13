@@ -34,7 +34,7 @@ main {
     input[type="number"] {
       width: 100%;
       padding: 0.5em;
-      border: 0;
+      border: transparent solid 3px;
       border-radius: 10px;
       font-weight: a.$font-weight;
       text-align: right;
@@ -90,4 +90,17 @@ main {
       }
     }
   }
+}
+
+// CONDITIONS
+
+.is-invalid {
+  border: a.$danger solid 3px !important;
+}
+
+small.invalid {
+  color: a.$danger;
+  position: absolute;
+  right: 0;
+  font-size: 1rem;
 }
