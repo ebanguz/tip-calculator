@@ -1,0 +1,35 @@
+<main class="container">
+  <form class="form">
+    <div class="form__div flex flex-dir-c">
+      <label class="form__label" for="">Bill</label>
+      <img class="form__icon" src="./images/icon-dollar.svg" alt="" srcset="" />
+      <input type="number" placeholder="0" />
+    </div>
+
+    <div class="form__div flex flex-dir-c">
+      <label class="form__label" for="">Select Tip %</label>
+      <div class="grid">
+        <input type="radio" name="value" value="5" id="five" />
+        <label for="five">5%</label>
+        <input type="radio" name="value" value="10" id="ten" />
+        <label for="ten">10%</label>
+        <input type="radio" name="value" value="15" id="fifteen" />
+        <label for="fifteen">15%</label>
+        <input type="radio" name="value" value="25" id="twentyfive" />
+        <label for="twentyfive">25%</label>
+        <input type="radio" name="value" value="50" id="fifty" />
+        <label for="fifty">50%</label>
+
+        <label for="custom" class="is-visually-hidden">Custom percent</label>
+        <input type="number" name="value" id="custom" placeholder="Custom" />
+      </div>
+    </div>
+
+    <div class="form__div flex flex-dir-c">
+      <label class="form__label" for="">Number of People</label>
+      <img class="form__icon" src="./images/icon-person.svg" alt="" srcset="" />
+      <input type="number" inputmode="numeric" placeholder="0" />
+    </div>
+  </form>
+  <app-display-results></app-display-results>
+</main>

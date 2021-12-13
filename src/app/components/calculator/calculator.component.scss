@@ -1,0 +1,93 @@
+@use "../../../styles/abstracts/" as a;
+
+// MAIN
+main {
+  padding: 1.1em 0.8em;
+  background: a.$white;
+  border-radius: 25px 25px 0 0;
+
+  @include a.breakpoint-up(medium) {
+    padding: 1.5em;
+  }
+  @include a.breakpoint-up(large) {
+    border-radius: 25px;
+    display: grid;
+    grid: auto/ 1fr 1fr;
+    gap: 2em;
+  }
+}
+
+// FORM
+
+.form {
+  &__label {
+    font-size: 16px;
+    font-weight: a.$font-weight;
+    margin-bottom: 0.5em;
+    color: a.$darkerGrayishCyan;
+  }
+
+  &__div {
+    position: relative;
+    margin-bottom: 2.3em;
+
+    input[type="number"] {
+      width: 100%;
+      padding: 0.5em;
+      border: 0;
+      border-radius: 10px;
+      font-weight: a.$font-weight;
+      text-align: right;
+      color: a.$veryDarkCyan;
+      background-color: a.$lighterGrayishCyan;
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      ::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: calc(50% + 0.4em);
+    left: 5%;
+  }
+
+  .grid {
+    display: grid;
+    grid: repeat(3, 50px) / repeat(2, 1fr);
+    gap: 0.5em;
+
+    @include a.breakpoint-up(grid) {
+      grid: repeat(2, 50px) / repeat(3, 1fr);
+    }
+
+    label {
+      padding: 8px;
+      color: a.$white;
+      font-weight: a.$font-weight;
+      text-align: center;
+      background: a.$veryDarkCyan;
+      border-radius: 5px;
+      transition: all 0.3s;
+
+      &:hover {
+        cursor: pointer;
+        color: a.$veryDarkCyan;
+        background: a.$lightGrayishCyan;
+      }
+    }
+
+    input[type="radio"] {
+      display: none;
+
+      &:checked + label {
+        color: a.$veryDarkCyan;
+        background: a.$strongCyan;
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+@use "../vendors/normalize";
+@use "../abstracts" as a;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+
+  font: 400 a.$fontSize a.$fontFamliy;
+  line-height: 1.5;
+  background: a.$lightGrayishCyan;
+
+  @include a.breakpoint-up(large) {
+    padding-bottom: 1em;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+.container {
+  width: clamp(16rem, 100vw, 57.5rem);
+  @include a.breakpoint-up(large) {
+    width: clamp(16rem, 90vw, 57.5rem);
+  }
+  margin: 0 auto;
+  position: relative;
+}
+
+.is-visually-hidden {
+  block-size: 1px;
+  inline-size: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(100%);
+  clip-path: inset(100%);
+}
+
+.flex {
+  display: flex;
+
+  &-jc-sb {
+    justify-content: space-between;
+  }
+  &-jc-c {
+    justify-content: center;
+  }
+  &-ai-c {
+    align-items: center;
+  }
+  &-dir-c {
+    flex-direction: column;
+  }
+}

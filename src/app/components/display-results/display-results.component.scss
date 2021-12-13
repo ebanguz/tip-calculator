@@ -1,0 +1,43 @@
+@use "../../../styles/abstracts/" as a;
+
+.result {
+  background: a.$veryDarkCyan;
+  padding: 2em 1em;
+  border-radius: 10px;
+  height: 100%;
+
+  &__person {
+    color: a.$lightGrayishCyan;
+    font-size: 14px;
+  }
+
+  .heading {
+    font-size: 1rem;
+    color: a.$white;
+    font-weight: a.$font-weight;
+  }
+
+  .amount {
+    font-weight: a.$font-weight;
+    @include a.fluid-type(font-size, 16rem, 57.5rem, 1.8rem, 2.8rem);
+    color: a.$strongCyan;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.3em 0;
+    margin-top: 20px;
+    text-transform: uppercase;
+    color: a.$veryDarkCyan;
+    background: a.$strongCyan;
+    border-radius: 5px;
+    border: 0;
+    margin-top: auto;
+  }
+}
+.row {
+  margin-bottom: 1em;
+  @include a.breakpoint-up(large) {
+    margin-bottom: 1.5em;
+  }
+}
