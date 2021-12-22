@@ -86,7 +86,7 @@
           appNumberOnly
           [min]="0"
           (focus)="selectedCustom()"
-          [ngModel]="custom"
+          [value]="custom"
         />
       </div>
     </div>
@@ -111,10 +111,9 @@
       <small *ngIf="numberPeopleValid" class="invalid">Can't be zero</small>
     </div>
   </form>
-  <app-display-results></app-display-results>
-  <pre>
-  {{ form.value | json }}
-  {{ form.valid }}
-</pre
-  >
+  <app-display-results
+    [tipAmount]="tipAmount"
+    [totalPeople]="totalPeople"
+    (onReset)="reset($event)"
+  ></app-display-results>
 </main>

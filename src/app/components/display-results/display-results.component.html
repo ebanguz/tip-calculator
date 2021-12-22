@@ -4,14 +4,14 @@
       <span class="heading">Tip Amount</span>
       <span class="result__person">/ person</span>
     </div>
-    <div class="amount">0.00</div>
+    <div class="amount">{{ tipAmount | currency }}</div>
   </div>
   <div class="row flex flex-jc-sb">
     <div class="total flex flex-dir-c">
       <span class="heading">Total</span>
       <span class="result__person">/ person</span>
     </div>
-    <div class="amount">0.00</div>
+    <div class="amount">{{ totalPeople | currency }}</div>
   </div>
-  <button class="btn btn--reset">Reset</button>
+  <button class="btn btn--reset" (click)="reset()">Reset</button>
 </section>

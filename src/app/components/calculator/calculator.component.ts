@@ -10,6 +10,8 @@ import { RadioButton } from 'src/app/interfaces/radio-button';
 export class CalculatorComponent implements OnInit {
   form: FormGroup;
   custom: number = 0;
+  totalPeople: number = 0;
+  tipAmount: number = 0;
 
   constructor(private fb: FormBuilder) {
     this.createForm();
@@ -40,18 +42,39 @@ export class CalculatorComponent implements OnInit {
       tipPercentage: this.custom,
       numberPeople: this.form.value.numberPeople,
     });
+    this.isReady();
   }
 
   //   Make function calculate
 
+  calculate(values: any) {
+    const { bill, tipPercentage, numberPeople } = values;
+
+    let tip = (tipPercentage / 100) * bill;
+    this.tipAmount = tip / numberPeople;
+    this.totalPeople = (bill + tip) / numberPeople;
+
+    console.log(
+      `Total People: ${this.totalPeople}; Tip Amount: ${this.tipAmount}`
+    );
+  }
+
   isReady() {
     if (this.form.valid) {
-      console.log('CALCULAAAAAAAAA');
+      this.calculate(this.form.value);
+    } else {
+      this.totalPeople = 0;
+      this.tipAmount = 0;
     }
   }
 
-  // onChange(chosenItem: any, inpCheckbox: HTMLInputElement) {
-  //   console.log(inpCheckbox);
-  //   inpCheckbox.checked = !chosenItem.checked;
-  // }
+  reset(event: number) {
+    console.log(event);
+
+    this.form.reset({
+      bill: '',
+      tipPercentage: 0,
+      numberPeople: 1,
+    });
+  }
 }
