@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RadioButton } from 'src/app/interfaces/radio-button';
 
 @Component({
   selector: 'app-calculator',
@@ -8,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CalculatorComponent implements OnInit {
   form: FormGroup;
-  isCheckedRadioBtn: boolean = false;
+  custom: number = 0;
 
   constructor(private fb: FormBuilder) {
     this.createForm();
@@ -28,14 +29,17 @@ export class CalculatorComponent implements OnInit {
   createForm() {
     this.form = this.fb.group({
       bill: ['', [Validators.required, Validators.min(1)]],
-      tipPercentage: ['', []],
-      numberPeople: ['', [Validators.required, Validators.min(1)]],
+      tipPercentage: [0, []],
+      numberPeople: [1, [Validators.required, Validators.min(1)]],
     });
   }
 
-  fun() {
-    this.isCheckedRadioBtn = false;
-    console.log('CONSOLE LOGGGG FOCUS ON CUSTOM');
+  selectedCustom() {
+    this.form.setValue({
+      bill: this.form.value.bill,
+      tipPercentage: this.custom,
+      numberPeople: this.form.value.numberPeople,
+    });
   }
 
   //   Make function calculate
@@ -43,8 +47,11 @@ export class CalculatorComponent implements OnInit {
   isReady() {
     if (this.form.valid) {
       console.log('CALCULAAAAAAAAA');
-    } else {
-      console.log('AUN NO');
     }
   }
+
+  // onChange(chosenItem: any, inpCheckbox: HTMLInputElement) {
+  //   console.log(inpCheckbox);
+  //   inpCheckbox.checked = !chosenItem.checked;
+  // }
 }

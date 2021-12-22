@@ -34,7 +34,7 @@ main {
     input[type="number"] {
       width: 100%;
       padding: 0.5em;
-      border: transparent solid 3px;
+      border: transparent solid 0px;
       border-radius: 10px;
       font-weight: a.$font-weight;
       text-align: right;
@@ -73,6 +73,7 @@ main {
       background: a.$veryDarkCyan;
       border-radius: 5px;
       transition: all 0.3s;
+      display: inherit;
 
       &:hover {
         cursor: pointer;
@@ -90,6 +91,10 @@ main {
       }
     }
   }
+}
+
+form:has(input[type="checkbox"]:checked) button {
+  /* ... */
 }
 
 // CONDITIONS

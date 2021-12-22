@@ -22,6 +22,19 @@
     <div class="form__div flex flex-dir-c">
       <label class="form__label" for="">Select Tip %</label>
       <div class="grid">
+        <!-- <label *ngFor="let item of radioButtonItems" for="five"
+          >{{ item.value }}%
+          <input
+            #radioInput
+            type="radio"
+            name="tipPercentage"
+            formControlName="tipPercentage"
+            [value]="item.value"
+            [id]="item.id"
+            (input)="onChange(item, radioInput)"
+          />
+        </label> -->
+
         <input
           type="radio"
           name="tipPercentage"
@@ -35,7 +48,6 @@
           name="tipPercentage"
           formControlName="tipPercentage"
           [value]="10"
-          [checked]="true"
           id="ten"
         />
         <label for="ten">10%</label>
@@ -73,7 +85,8 @@
           placeholder="Custom"
           appNumberOnly
           [min]="0"
-          (focus)="fun()"
+          (focus)="selectedCustom()"
+          [ngModel]="custom"
         />
       </div>
     </div>
@@ -89,9 +102,8 @@
       <input
         type="number"
         inputmode="numeric"
-        placeholder="0"
+        placeholder="1"
         appNumberOnly
-        [value]="0"
         [min]="0"
         formControlName="numberPeople"
         [class.is-invalid]="numberPeopleValid"
