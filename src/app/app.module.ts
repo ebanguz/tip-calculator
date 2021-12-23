@@ -12,6 +12,8 @@ import { DisplayResultsComponent } from './components/display-results/display-re
 
 // Directives
 import { NumberOnlyDirective } from './directives/number-only.directive';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,12 @@ import { NumberOnlyDirective } from './directives/number-only.directive';
     DisplayResultsComponent,
     NumberOnlyDirective,
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, ServiceWorkerModule.register('ngsw-worker.js', {
+  enabled: environment.production,
+  // Register the ServiceWorker as soon as the app is stable
+  // or after 30 seconds (whichever comes first).
+  registrationStrategy: 'registerWhenStable:30000'
+})],
   providers: [],
   bootstrap: [AppComponent],
 })
