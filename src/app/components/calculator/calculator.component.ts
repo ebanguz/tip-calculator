@@ -69,12 +69,12 @@ export class CalculatorComponent implements OnInit {
   }
 
   reset(event: number) {
-    console.log(event);
-
     this.form.reset({
       bill: '',
       tipPercentage: 0,
       numberPeople: 1,
     });
+    this.totalPeople = 0;
+    this.tipAmount = 0;
   }
 }
