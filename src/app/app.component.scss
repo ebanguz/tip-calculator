@@ -1,0 +1,14 @@
+@use "../styles/abstracts/index" as a;
+
+.loader {
+  position: fixed;
+  inset: 0;
+  background: a.$lightGrayishCyan;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+
+  img {
+    width: 25%;
+  }
+}
