@@ -68,7 +68,7 @@ export class CalculatorComponent implements OnInit {
     }
   }
 
-  reset(event: number) {
+  reset() {
     this.form.reset({
       bill: '',
       tipPercentage: 0,
